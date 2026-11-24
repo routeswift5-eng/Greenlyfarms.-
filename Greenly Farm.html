@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Greenly Farm</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fcfdfb;--card:#fff;--ink:#0b0b0b;--mute:#666d68;--line:#e9ece6;--forest:#123d2a;--lime:#b8e04a;--sun:#f2b134;--sky:#4a90b8;--clay:#c4663f;--ok:#2e7d4f;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1511;--card:#17211b;--ink:#e9efe5;--mute:#92a197;--line:#263329;--forest:#0b2a1d;--ok:#6fcf93;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1511;--card:#17211b;--ink:#e9efe5;--mute:#92a197;--line:#263329;--forest:#0b2a1d;--ok:#6fcf93;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Public Sans",system-ui,sans-serif}
+h1,h2,h3,.big{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;letter-spacing:-.01em}
+.wrap{max-width:1000px;margin:0 auto;padding:16px 16px 110px}
+header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.logo{width:42px;height:42px;border-radius:13px;background:#0d0d0d;display:grid;place-items:center}
+header h1{font-size:22px;line-height:1.1}header small{color:var(--mute)}
+.title{display:flex;justify-content:space-between;align-items:center;margin:6px 0 14px;gap:10px}
+.title h2{font-size:24px}
+.btn{background:#0d0d0d;color:#fff;border:0;border-radius:999px;padding:9px 18px;font:600 14px "Public Sans";cursor:pointer}
+:root:not([data-theme="light"]) .btn{background:var(--lime);color:#14231b}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.hero{background:var(--forest);color:#eaf4e4;border-radius:22px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero small{opacity:.75}.hero .big{font-size:38px;font-weight:800;color:var(--lime);line-height:1.1;margin:4px 0}
+.hero svg{position:absolute;right:-20px;bottom:-30px;opacity:.14}
+.pill{display:inline-block;background:rgba(184,224,74,.2);color:var(--lime);border-radius:99px;padding:2px 10px;font-size:13px;font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:12px;align-items:center}
+.ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none}
+.kpi b{display:block;font:800 22px/1.1 "Bricolage Grotesque"}.kpi span{color:var(--mute);font-size:13px}
+.g2{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px}
+.card h3{font-size:17px}.card .sub{color:var(--mute);font-size:13px;margin-bottom:8px}
+svg text{fill:var(--mute);font:11px "Public Sans"}
+.grid line{stroke:var(--line)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--mute);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.donut{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.crops{display:grid;gap:12px}
+.cc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+.cc .top{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.cc h3{font-size:19px}.cc p{margin:2px 0 10px;color:var(--mute);font-size:13px}
+.meter{height:9px;background:var(--line);border-radius:9px;overflow:hidden}.meter i{display:block;height:100%;border-radius:9px}
+.row2{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-top:6px}
+.tag{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600;background:#dff0e3;color:#1f6a40}
+.tag.w{background:#fbefcf;color:#7a5608}.tag.b{background:#f7dcd2;color:#8d3a1f}
+:root:not([data-theme="light"]) .tag{background:#1f3a2a;color:#8fe0ae}:root:not([data-theme="light"]) .tag.w{background:#443612;color:#f0cf78}:root:not([data-theme="light"]) .tag.b{background:#4a2519;color:#f0a58b}
+.x{background:none;border:0;color:var(--clay);font:600 13px "Public Sans";cursor:pointer;padding:4px 0}
+.list .it{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.list .it:last-child{border:0}
+.it .m{flex:1;min-width:0}.it .m b{display:block}.it .m span{color:var(--mute);font-size:13px}
+.it .r{text-align:right}
+.al{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.al:last-child{border:0}
+.dot{width:9px;height:9px;border-radius:50%;margin-top:7px;flex:none}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.tabs div{pointer-events:auto;max-width:560px;margin:0 auto;background:#0d0d0d;border-radius:26px;display:grid;grid-template-columns:repeat(6,1fr);padding:6px;box-shadow:0 8px 28px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.08)}
+.tabs button{background:none;border:0;color:#b8bdb9;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0;border-radius:20px;font:500 10.5px "Public Sans";cursor:pointer}
+.tabs button[aria-current="page"]{background:var(--lime);color:#14231b;font-weight:700}
+.tabs svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+button:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+dialog{border:1px solid var(--line);border-radius:20px;background:var(--card);color:var(--ink);padding:20px;width:min(420px,92vw)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+label{display:block;font-size:13px;color:var(--mute);margin:10px 0 3px}
+input{width:100%;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit}
+.rw{display:flex;gap:8px;justify-content:end;margin-top:16px}
+@media(min-width:800px){.kpis{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:1.4fr 1fr}.crops{grid-template-columns:repeat(2,1fr)}.hero .big{font-size:48px}}
+@media print{.tabs,.btn{display:none}}
+</style></head><body>
+<div class="wrap">
+<header><div class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8e04a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/><path d="M5 19c3-5 6-8 10-10"/></svg></div>
+<div><h1>Greenly Farm</h1><small>Smart farm management</small></div></header>
+<div id="main"></div></div>
+<nav class="tabs" aria-label="Pages"><div id="tabs"></div></nav>
+<dialog id="dlg"><form method="dialog" id="frm"></form></dialog>
+<script>
+var $=function(s){return document.querySelector(s)};
+var money=function(n){return "₦"+Number(n).toLocaleString()};
+var ICON={
+dashboard:'<path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/>',
+crops:'<path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/><path d="M5 19c3-5 6-8 10-10"/>',
+livestock:'<circle cx="7" cy="9" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="17" cy="9" r="2"/><path d="M12 12c-3 0-5 2-5 4.5 0 1.5 1.5 2 3 1.5 1.5-.5 2.5-.5 4 0 1.5.5 3 0 3-1.5C17 14 15 12 12 12z"/>',
+inventory:'<path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+sales:'<path d="M3 5h3l2 11h10l2-8H7"/><circle cx="10" cy="20" r="1"/><circle cx="17" cy="20" r="1"/>',
+reports:'<path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/>'};
+var NAMES={dashboard:"Dashboard",crops:"Crops",livestock:"Livestock",inventory:"Inventory",sales:"Sales",reports:"Reports"};
+var svgI=function(k){return '<svg viewBox="0 0 24 24">'+ICON[k]+'</svg>'};
+var S={
+crops:[{n:"Maize",f:"Field A",a:12,pl:"Mar 14",h:"Jul 20",st:"Growing",p:70},{n:"Cassava",f:"Field B",a:8,pl:"Feb 02",h:"Nov 30",st:"Ready soon",p:92},{n:"Tomato",f:"Field C",a:3,pl:"Aug 10",h:"Nov 05",st:"Harvested",p:100},{n:"Yam",f:"Field D",a:6,pl:"Apr 22",h:"Dec 18",st:"Growing",p:58}],
+live:[{t:"Cattle",c:24,h:"Healthy",v:"Dec 02",f:"Pasture"},{t:"Goats",c:38,h:"Healthy",v:"Nov 28",f:"Pen 2"},{t:"Poultry",c:420,h:"Check",v:"Nov 26",f:"Coop 1"},{t:"Pigs",c:15,h:"Healthy",v:"Jan 09",f:"Pen 4"}],
+inv:[{i:"NPK fertilizer",c:"Input",q:18,u:"bags",m:20},{i:"Maize seed",c:"Input",q:40,u:"kg",m:15},{i:"Poultry feed",c:"Feed",q:9,u:"bags",m:12},{i:"Harvested maize",c:"Produce",q:2400,u:"kg",m:0},{i:"Insecticide",c:"Input",q:6,u:"litres",m:5}],
+sales:[{d:"Nov 20",p:"Tomato",q:300,u:"kg",pr:600,b:"Mile 12 Market"},{d:"Nov 18",p:"Eggs",q:90,u:"crates",pr:2400,b:"Mama Ade Stores"},{d:"Nov 12",p:"Maize",q:800,u:"kg",pr:450,b:"AgroMill Ltd"},{d:"Nov 05",p:"Goat",q:4,u:"head",pr:55000,b:"Local trader"}]};
+var MON=["Jun","Jul","Aug","Sep","Oct","Nov"],EXP=[310000,340000,390000,410000,450000,470000],REV=[420000,560000,480000,690000,760000];
+var tot=function(){return S.sales.reduce(function(a,s){return a+s.q*s.pr},0)};
+var revs=function(){return REV.concat([tot()])};
+var COL=["#2e7d4f","#f2b134","#4a90b8","#c4663f","#8a6bbf"];
+var k=function(v){return v>=1e6?"₦"+(v/1e6)+"M":v>=1000?"₦"+(v/1000)+"k":"₦"+v};
+function axis(max){var r=max/4,m=Math.pow(10,Math.floor(Math.log10(r))),st=[1,2,2.5,5,10].map(function(x){return x*m}).filter(function(x){return x>=r})[0];return st}
+function frame(max,n){var st=axis(max),W=360,H=210,L=46,B=26,T=14,top=st*4,g="";
+for(var i=0;i<=4;i++){var y=T+(H-B-T)*(1-i/4);g+='<line x1="'+L+'" x2="'+(W-6)+'" y1="'+y+'" y2="'+y+'"/><text x="'+(L-6)+'" y="'+(y+4)+'" text-anchor="end">'+k(st*i)+'</text>'}
+return {W:W,H:H,L:L,B:B,T:T,top:top,g:'<g class="grid">'+g+'</g>'}}
+function bars(labels,vals,cols){var f=frame(Math.max.apply(null,vals)),n=vals.length,pw=(f.W-f.L-6)/n,s='<svg viewBox="0 0 '+f.W+' '+f.H+'" width="100%" role="img" aria-label="Bar chart">'+f.g;
+vals.forEach(function(v,i){var h=(f.H-f.B-f.T)*v/f.top,x=f.L+i*pw+pw*.2,w=pw*.6,y=f.H-f.B-h;
+s+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="5" fill="'+(cols?cols[i%cols.length]:COL[0])+'"/><text x="'+(x+w/2)+'" y="'+(y-4)+'" text-anchor="middle" style="fill:var(--ink);font-weight:600">'+k(v)+'</text><text x="'+(x+w/2)+'" y="'+(f.H-8)+'" text-anchor="middle">'+labels[i]+'</text>'});
+return s+'</svg>'}
+function lines(labels,a,b){var f=frame(Math.max.apply(null,a.concat(b))),n=a.length,pw=(f.W-f.L-6)/n,s='<svg viewBox="0 0 '+f.W+' '+f.H+'" width="100%" role="img" aria-label="Line chart">'+f.g;
+[[a,COL[0]],[b,COL[3]]].forEach(function(z){var p=z[0].map(function(v,i){return (f.L+i*pw+pw/2)+","+(f.H-f.B-(f.H-f.B-f.T)*v/f.top)}).join(" ");
+s+='<polyline points="'+p+'" fill="none" stroke="'+z[1]+'" stroke-width="3" stroke-linejoin="round"/>';
+p.split(" ").forEach(function(q){var c=q.split(",");s+='<circle cx="'+c[0]+'" cy="'+c[1]+'" r="4" fill="var(--card)" stroke="'+z[1]+'" stroke-width="2.5"/>'})});
+labels.forEach(function(l,i){s+='<text x="'+(f.L+i*pw+pw/2)+'" y="'+(f.H-8)+'" text-anchor="middle">'+l+'</text>'});
+return s+'</svg><div class="legend"><span><i style="background:'+COL[0]+'"></i>Income</span><span><i style="background:'+COL[3]+'"></i>Expenses</span></div>'}
+function donut(items,unit){var t=items.reduce(function(a,x){return a+x.v},0),c=2*Math.PI*42,o=0,s='<svg viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Share chart"><g transform="rotate(-90 60 60)">';
+items.forEach(function(x,i){var d=c*x.v/t;s+='<circle cx="60" cy="60" r="42" fill="none" stroke="'+COL[i%5]+'" stroke-width="16" stroke-dasharray="'+d+' '+(c-d)+'" stroke-dashoffset="'+(-o)+'"/>';o+=d});
+s+='</g><text x="60" y="60" text-anchor="middle" style="fill:var(--ink);font:800 20px Bricolage Grotesque">'+t.toLocaleString()+'</text><text x="60" y="75" text-anchor="middle">'+unit+'</text></svg>';
+return '<div class="donut">'+s+'<div class="legend" style="flex-direction:column;gap:8px">'+items.map(function(x,i){return '<span><i style="background:'+COL[i%5]+'"></i>'+x.l+': <b style="color:var(--ink)">'+x.v.toLocaleString()+'</b> ('+Math.round(x.v/t*100)+'%)</span>'}).join("")+'</div></div>'}
+function tag(t){var c=/Healthy|Growing|Harvested|OK/.test(t)?"":/Low|Check|Ready/.test(t)?" w":" b";return '<span class="tag'+c+'">'+t+'</span>'}
+function ttl(t,btn){return '<div class="title"><h2>'+t+'</h2>'+(btn?'<button class="btn" data-add="'+btn[0]+'">+ '+btn[1]+'</button>':'')+'</div>'}
+function ico(t,c){return '<div class="ic" style="background:'+c+'22"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="'+c+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICON[t]+'</svg></div>'}
+var V={
+dashboard:function(){var low=S.inv.filter(function(x){return x.m&&x.q<x.m}),an=S.live.reduce(function(a,l){return a+l.c},0),r=revs(),ch=Math.round((r[5]-r[4])/r[4]*100);
+return '<div class="hero"><small>Sales this month</small><div class="big">'+money(tot())+'</div><span class="pill">'+(ch>=0?"▲ ":"▼ ")+Math.abs(ch)+'% vs October</span><svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#b8e04a" stroke-width="1.5"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/></svg></div>'+
+'<div class="kpis"><div class="kpi">'+ico("crops","#2e7d4f")+'<div><b>'+S.crops.length+'</b><span>Crops</span></div></div><div class="kpi">'+ico("livestock","#c4663f")+'<div><b>'+an+'</b><span>Animals</span></div></div><div class="kpi">'+ico("inventory","#4a90b8")+'<div><b>'+low.length+'</b><span>Low stock</span></div></div><div class="kpi">'+ico("sales","#d89a14")+'<div><b>'+S.sales.length+'</b><span>Orders</span></div></div></div>'+
+'<div class="g2"><div class="card"><h3>Monthly sales</h3><div class="sub">Last 6 months, in naira</div>'+bars(MON,r)+'</div>'+
+'<div><div class="card"><h3>Livestock mix</h3><div class="sub">Animals by type</div>'+donut(S.live.map(function(l){return {l:l.t,v:l.c}}),"animals")+'</div></div></div>'+
+'<div class="g2"><div class="card"><h3>Crop progress</h3><div class="sub">How far each crop is to harvest</div>'+S.crops.map(function(c,i){return '<div style="margin:12px 0"><div style="display:flex;justify-content:space-between"><b>'+c.n+'</b><span style="color:var(--mute)">'+c.p+'%</span></div><div class="meter"><i style="width:'+c.p+'%;background:'+COL[i%5]+'"></i></div></div>'}).join("")+'</div>'+
+'<div class="card"><h3>Needs attention</h3><div class="sub">Do these first</div>'+low.map(function(x){return '<div class="al"><span class="dot" style="background:var(--clay)"></span>'+x.i+' is low: '+x.q+' '+x.u+' left, reorder at '+x.m+'</div>'}).join("")+S.crops.filter(function(c){return c.st=="Ready soon"}).map(function(c){return '<div class="al"><span class="dot" style="background:var(--sun)"></span>'+c.n+' in '+c.f+' is ready to harvest by '+c.h+'</div>'}).join("")+S.live.filter(function(l){return l.h=="Check"}).map(function(l){return '<div class="al"><span class="dot" style="background:var(--sun)"></span>'+l.t+' need a health check. Vaccination due '+l.v+'</div>'}).join("")+'</div></div>'},
+crops:function(){return ttl("Crop management",["crops","Add crop"])+'<div class="crops">'+S.crops.map(function(c,i){return '<div class="cc"><div class="top"><div><h3>'+c.n+'</h3><p>'+c.f+' · '+c.a+' acres</p></div>'+tag(c.st)+'</div><div class="meter"><i style="width:'+c.p+'%;background:'+COL[i%5]+'"></i></div><div class="row2"><span>Planted '+c.pl+'</span><span>'+c.p+'% grown</span><span>Harvest '+c.h+'</span></div><button class="x" data-del="crops" data-i="'+i+'">Remove</button></div>'}).join("")+'</div>'},
+livestock:function(){return ttl("Livestock management",["live","Add livestock"])+'<div class="card"><h3>Headcount</h3>'+donut(S.live.map(function(l){return {l:l.t,v:l.c}}),"animals")+'</div><div class="card list">'+S.live.map(function(l,i){return '<div class="it">'+ico("livestock",COL[i%5])+'<div class="m"><b>'+l.t+' · '+l.c+'</b><span>'+l.f+' · Vaccination due '+l.v+'</span></div><div class="r">'+tag(l.h)+'<br><button class="x" data-del="live" data-i="'+i+'">Remove</button></div></div>'}).join("")+'</div>'},
+inventory:function(){return ttl("Inventory",["inv","Add item"])+'<div class="card list">'+S.inv.map(function(x,i){var lo=x.m&&x.q<x.m,pc=x.m?Math.min(100,Math.round(x.q/(x.m*2)*100)):100;return '<div class="it"><div class="m"><b>'+x.i+'</b><span>'+x.c+(x.m?' · reorder at '+x.m:'')+'</span><div class="meter" style="margin-top:6px"><i style="width:'+pc+'%;background:'+(lo?"var(--clay)":"var(--ok)")+'"></i></div></div><div class="r"><b>'+x.q.toLocaleString()+'</b> '+x.u+'<br>'+tag(lo?"Low":"OK")+'<br><button class="x" data-del="inv" data-i="'+i+'">Remove</button></div></div>'}).join("")+'</div>'},
+sales:function(){return ttl("Sales",["sales","Record sale"])+'<div class="hero"><small>Total sales</small><div class="big">'+money(tot())+'</div><span class="pill">'+S.sales.length+' orders</span></div><div class="card list">'+S.sales.map(function(s,i){return '<div class="it">'+ico("sales",COL[i%5])+'<div class="m"><b>'+s.p+' · '+s.q+' '+s.u+'</b><span>'+s.b+' · '+s.d+'</span></div><div class="r"><b>'+money(s.q*s.pr)+'</b><br><span style="color:var(--mute);font-size:13px">'+money(s.pr)+' each</span><br><button class="x" data-del="sales" data-i="'+i+'">Remove</button></div></div>'}).join("")+'</div>'},
+reports:function(){var by={};S.sales.forEach(function(s){by[s.p]=(by[s.p]||0)+s.q*s.pr});var ks=Object.keys(by),r=revs(),pf=r.map(function(v,i){return v-EXP[i]});
+return ttl("Reports")+'<div class="kpis"><div class="kpi">'+ico("sales","#2e7d4f")+'<div><b>'+k(tot())+'</b><span>Revenue</span></div></div><div class="kpi">'+ico("reports","#c4663f")+'<div><b>'+k(EXP[5])+'</b><span>Expenses</span></div></div><div class="kpi">'+ico("dashboard","#4a90b8")+'<div><b>'+k(pf[5])+'</b><span>Profit</span></div></div><div class="kpi">'+ico("crops","#d89a14")+'<div><b>'+S.crops.reduce(function(a,c){return a+c.a},0)+'</b><span>Acres</span></div></div></div>'+
+'<div class="g2"><div class="card"><h3>Income vs expenses</h3><div class="sub">Last 6 months, in naira</div>'+lines(MON,r,EXP)+'</div><div class="card"><h3>Sales share</h3><div class="sub">Revenue by product</div>'+donut(ks.map(function(p){return {l:p,v:by[p]}}),"naira")+'</div></div>'+
+'<div class="card"><h3>Revenue by product</h3><div class="sub">This month, in naira</div>'+bars(ks,ks.map(function(p){return by[p]}),COL)+'</div><button class="btn ghost" onclick="window.print()">Print report</button>'}};
+var F={crops:[["n","Crop name"],["f","Field"],["a","Acres","number"],["pl","Planting date"],["h","Harvest date"]],live:[["t","Animal type"],["c","Count","number"],["f","Housing"],["v","Next vaccination"]],inv:[["i","Item"],["c","Category"],["q","Quantity","number"],["u","Unit"],["m","Reorder level","number"]],sales:[["d","Date"],["p","Product"],["q","Quantity","number"],["u","Unit"],["pr","Price each (₦)","number"],["b","Buyer"]]};
+var T={crops:"Add crop",live:"Add livestock",inv:"Add item",sales:"Record sale"},page="dashboard";
+$("#tabs").innerHTML=Object.keys(NAMES).map(function(p){return '<button data-p="'+p+'">'+svgI(p)+NAMES[p]+'</button>'}).join("");
+function render(){$("#main").innerHTML=V[page]();document.querySelectorAll("#tabs button").forEach(function(b){b.toggleAttribute("aria-current",b.dataset.p==page);if(b.dataset.p==page)b.setAttribute("aria-current","page")})}
+document.addEventListener("click",function(e){var t=e.target.closest("[data-p],[data-del],[data-add]");if(!t)return;
+if(t.dataset.p){page=t.dataset.p;render();window.scrollTo(0,0)}
+if(t.dataset.del){S[t.dataset.del].splice(+t.dataset.i,1);render()}
+if(t.dataset.add){var a=t.dataset.add;$("#frm").innerHTML='<h3>'+T[a]+'</h3>'+F[a].map(function(f){return '<label>'+f[1]+'<input name="'+f[0]+'" type="'+(f[2]||"text")+'" required></label>'}).join("")+'<div class="rw"><button class="btn ghost" value="x" formnovalidate>Cancel</button><button class="btn" value="ok">Save</button></div>';$("#dlg").dataset.k=a;$("#dlg").showModal()}});
+$("#frm").addEventListener("submit",function(e){var a=$("#dlg").dataset.k;if(!e.submitter||e.submitter.value!="ok")return;var o={};new FormData(e.target).forEach(function(v,n){o[n]=F[a].filter(function(f){return f[0]==n})[0][2]=="number"?+v:v});if(a=="crops"){o.st="Growing";o.p=10}if(a=="live")o.h="Healthy";S[a].unshift(o);render()});
+render();
+</script></body></html>
